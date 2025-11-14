@@ -1,4 +1,6 @@
 using API.Data;
+using API.Interfaces;
+using API.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 // builder.Services.AddOpenApi();
 
 builder.Services.AddCors(); // adding cors headers
+// builder.Services.AddSingleton ---> used for injecting them as singleton(service lifetime scoped)
+// builder.Services.AddTransient ---> keeps instance after complete
+builder.Services.AddScoped<ITokenService, TokenService>();
 
 var app = builder.Build();
 
