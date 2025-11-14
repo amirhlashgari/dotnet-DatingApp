@@ -1,14 +1,14 @@
 using API.Data;
 using API.Entities;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class MembersController(ApplicationDbContext context) : ControllerBase // in parenthesis is dependency injection model of dotnet
+    // [Route("api/[controller]")]
+    // [ApiController]
+    // public class MembersController(ApplicationDbContext context) : ControllerBase // in parenthesis is dependency injection model of dotnet
+    public class MembersController(ApplicationDbContext context) : BaseApiController
     {
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<AppUser>>> GetMembers()
